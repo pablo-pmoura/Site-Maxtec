@@ -1,0 +1,95 @@
+---
+const { imgLink, heroLogo, subtitulo } = Astro.props;
+---
+
+<section class="w-full h-screen relative items-center">
+  <img
+    src={imgLink}
+    alt="Hero Photo"
+    id="hero-bg"
+    class="w-full h-full object-cover relative"
+  />
+  <span class="w-full h-full absolute top-0 opacity-50"></span>
+
+  <div
+    id="hero-text-container"
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex-col items-center"
+  >
+    <img src={heroLogo} alt="Hero Logo" id="hero-logo" class="relative" />
+    <p
+      class="text-center mt-5 text-2xl text-white font-light relative tracking-widest"
+      id="hero-subtitle"
+    >
+      {subtitulo}
+    </p>
+  </div>
+</section>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+  * {
+    font-family: Inter;
+  }
+
+  body {
+    height: 2000px;
+  }
+
+  #hero-bg {
+    z-index: -1;
+  }
+  span {
+    background-color: #325082;
+  }
+
+  #hero-logo {
+    z-index: 1;
+    top: 30px;
+    opacity: 0;
+    filter: blur(5px);
+    transition: all 0.5s ease;
+  }
+
+  #hero-logo.show {
+    top: 0px;
+    filter: blur(0);
+    opacity: 1;
+  }
+
+  #hero-subtitle {
+    top: 20px;
+    opacity: 0;
+    filter: blur(5px);
+    transition: all 0.5s ease;
+    transition-delay: 0.5s;
+  }
+
+  #hero-subtitle.show {
+    top: 0px;
+    filter: blur(0);
+    opacity: 1;
+  }
+</style>
+
+<script>
+  const heroLogo = document.querySelector("#hero-logo");
+  const logoSubtitle = document.querySelector("#hero-subtitle");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle("show", entry.isIntersecting);
+        if (entry.isIntersecting) {
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.5,
+    }
+  );
+
+  observer.observe(heroLogo);
+  observer.observe(logoSubtitle);
+</script>
