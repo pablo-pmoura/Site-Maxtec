@@ -3,14 +3,67 @@ const { title, preTitle } = Astro.props;
 ---
 
 <div class="flex flex-col items-center">
-  <p>{preTitle}</p>
-  <h1>{title}</h1>
+  <p class="pre-title">{preTitle}</p>
+  <h1 class="title">{title}</h1>
 </div>
 
 <style>
+  div {
+    margin-bottom: 80px;
+  }
+
+  p {
+    position: relative;
+    color: #979797;
+    opacity: 0;
+    transition: ease 0.8s;
+    bottom: -30px;
+    filter: blur(5px);
+  }
+
+  .pre-title.show {
+    opacity: 1;
+    bottom: 0;
+    filter: blur(0);
+  }
+
   h1 {
+    position: relative;
     color: var(--azul-maxtec);
     font-size: 48px;
     font-weight: bold;
+    opacity: 0;
+    transition: ease 0.8s;
+    transition-delay: 0.5s;
+    bottom: -30px;
+    filter: blur(5px);
+  }
+
+  .title.show {
+    opacity: 1;
+    bottom: 0;
+    filter: blur(0);
   }
 </style>
+
+<script>
+  const title = document.querySelector(".title");
+  const preTitle = document.querySelector(".pre-title");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle("show", entry.isIntersecting);
+        if (entry.isIntersecting) {
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 1,
+    }
+  );
+
+  observer.observe(title);
+  observer.observe(preTitle);
+</script>

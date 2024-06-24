@@ -1,0 +1,115 @@
+---
+const { sectionTitle2, sectionPreTitle2 } = Astro.props;
+---
+
+<div class="section-title-container">
+  <div class="titulo-container2">
+    <p class="pre-title2">{sectionPreTitle2}</p>
+    <h1 class="title2">{sectionTitle2}</h1>
+  </div>
+  <p class="description2">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur cum
+    velit impedit corporis laudantium harum. Possimus quam dignissimos dolorum
+    cupiditate delectus eveniet consectetur.
+  </p>
+</div>
+
+<style>
+  .section-title-container {
+    width: 1200px;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  p {
+    color: #979797;
+  }
+
+  .pre-title2 {
+    position: relative;
+    color: #979797;
+    opacity: 0;
+    transition: ease 0.8s;
+    bottom: -30px;
+    filter: blur(5px);
+  }
+
+  .pre-title2.show {
+    opacity: 1;
+    bottom: 0;
+    filter: blur(0);
+  }
+
+  h1 {
+    position: relative;
+    color: var(--azul-maxtec);
+    font-size: 48px;
+    font-weight: bold;
+    opacity: 0;
+    transition: ease 0.8s;
+    transition-delay: 0.5s;
+    bottom: -30px;
+    filter: blur(5px);
+  }
+
+  .title2.show {
+    opacity: 1;
+    bottom: 0;
+    filter: blur(0);
+  }
+
+  .description2 {
+    width: 100%;
+    align-self: center;
+    position: relative;
+    color: #979797;
+    opacity: 0;
+    transition: ease 0.8s;
+    transition-delay: 0.8s;
+    bottom: -30px;
+    filter: blur(5px);
+  }
+
+  .description2.show {
+    opacity: 1;
+    bottom: 0;
+    filter: blur(0);
+  }
+
+  @media (max-width: 1200px) {
+    .section-title-container {
+      grid-template-columns: 1fr;
+      column-gap: 0px;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 548px) {
+  }
+</style>
+
+<script>
+  const title = document.querySelector(".title2");
+  const preTitle = document.querySelector(".pre-title2");
+  const description = document.querySelector(".description2");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle("show", entry.isIntersecting);
+        if (entry.isIntersecting) {
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 1,
+    }
+  );
+
+  observer.observe(title);
+  observer.observe(preTitle);
+  observer.observe(description);
+</script>

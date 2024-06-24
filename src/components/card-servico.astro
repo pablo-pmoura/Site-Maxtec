@@ -1,28 +1,40 @@
 ---
-const { cardTitle, cardIcon, whatRow } = Astro.props;
+const { services } = Astro.props;
 ---
 
 <div id="card-container" class="w-80">
-  <div class={whatRow}>
-    <img src={cardIcon} alt="Card Icon" class="w-8" />
-    <h1 class="text-4xl font-bold max-w-sm mt-5">{cardTitle}</h1>
-    <p class="max-w-xs mt-3">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Id ex rem,
-      aliquid enim magni mollitia adipisci labore officiis soluta nesciunt?
-    </p>
-  </div>
+  {
+    services.map(
+      (service: {
+        cardIcon: string;
+        cardTitle: string;
+        serviceDescription: string;
+      }) => (
+        <div>
+          <img src={service.cardIcon} alt="Card Icon" class="w-8" />
+          <h1 class="text-4xl font-bold mt-5">{service.cardTitle}</h1>
+          <p class="mt-3">{service.serviceDescription}</p>
+        </div>
+      )
+    )
+  }
 </div>
 
 <style>
   #card-container {
+    width: 1400px;
+    position: relative;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 50px;
-    width: 768px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 20px;
+    opacity: 0;
+    left: -20px;
+    transition: all 1s ease;
   }
 
-  .row-2 {
-    grid-column-start: 3;
+  #card-container.show {
+    opacity: 1;
+    left: 0;
   }
 
   #card-container h1 {
@@ -32,6 +44,8 @@ const { cardTitle, cardIcon, whatRow } = Astro.props;
 
   #card-container p {
     color: #979797;
+    font-size: 16px;
+    width: 80%;
   }
 
   @media (max-width: 768px) {
@@ -42,3 +56,25 @@ const { cardTitle, cardIcon, whatRow } = Astro.props;
     }
   }
 </style>
+
+<script>
+  const cardContainer = document.querySelectorAll("#card-container");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle("show", entry.isIntersecting);
+        if (entry.isIntersecting) {
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 1,
+    }
+  );
+
+  cardContainer.forEach((card) => {
+    observer.observe(card);
+  });
+</script>
