@@ -3,6 +3,7 @@ import CardServico from "../components/card-servico.astro";
 import Hero from "../components/hero.astro";
 import Nav from "../components/nav.tsx";
 import DefaultSection from "../layouts/defaultSection.astro";
+import SectionWithLine from "../layouts/sectionWithLine.astro";
 ---
 
 <html lang="en">
@@ -23,29 +24,7 @@ import DefaultSection from "../layouts/defaultSection.astro";
       subtitulo="SISTEMAS PARA MOVIMENTAÇÃO DE CARGAS"
     />
 
-    <DefaultSection>
-      <CardServico
-        cardTitle="Serviço 1"
-        cardIcon="/icons/wrench.and.screwdriver.svg"
-      />
-
-      <CardServico
-        cardTitle="Serviço 2"
-        cardIcon="/icons/wrench.and.screwdriver.svg"
-        whatRow="row-2"
-      />
-
-      <CardServico
-        cardTitle="Serviço 3"
-        cardIcon="/icons/wrench.and.screwdriver.svg"
-      />
-
-      <CardServico
-        cardTitle="Serviço 4"
-        cardIcon="/icons/wrench.and.screwdriver.svg"
-        whatRow="row-2"
-      />
-    </DefaultSection>
+    <SectionWithLine />
 
     <div class="h-[2000px]"></div>
   </body>
