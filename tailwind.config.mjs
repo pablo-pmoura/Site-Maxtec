@@ -5,5 +5,9 @@ export default {
 		extend: {},
 	},
 	plugins: [
+
+		require('tailwindcss-animated'),
+
+
 	],
 }

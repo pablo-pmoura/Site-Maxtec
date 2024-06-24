@@ -1,5 +1,6 @@
 ---
 import Hero from "../components/hero.astro";
+import Nav from "../components/nav.tsx";
 ---
 
 <html lang="en">
@@ -8,13 +9,18 @@ import Hero from "../components/hero.astro";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="stylesheet" href="/global.css" />
     <title>Astro</title>
   </head>
   <body>
+    <Nav client:load imgSource="/icons/mxt-logo.svg" />
+
     <Hero
-      imgLink="/public/photos/guindaste.png"
-      heroLogo="/public/icons/maxtec-lettering.png"
+      imgLink="/photos/guindaste.png"
+      heroLogo="/icons/maxtec-lettering.png"
       subtitulo="SISTEMAS PARA MOVIMENTAÇÃO DE CARGAS"
     />
+
+    <div class="h-[2000px]"></div>
   </body>
 </html>
