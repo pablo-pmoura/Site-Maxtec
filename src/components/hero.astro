@@ -48,7 +48,8 @@ const { imgLink, heroLogo, subtitulo } = Astro.props;
     top: 30px;
     opacity: 0;
     filter: blur(5px);
-    transition: all 0.5s ease;
+    transition: all 0.8s ease;
+    transition-delay: 0.3s;
   }
 
   #hero-logo.show {
@@ -62,13 +63,27 @@ const { imgLink, heroLogo, subtitulo } = Astro.props;
     opacity: 0;
     filter: blur(5px);
     transition: all 0.5s ease;
-    transition-delay: 0.5s;
+    transition-delay: 1s;
   }
 
   #hero-subtitle.show {
     top: 0px;
     filter: blur(0);
     opacity: 1;
+  }
+
+  @media (max-width: 1200px) {
+    #hero-subtitle {
+      font-size: 1.2rem;
+      margin-top: 5px;
+    }
+  }
+  @media (max-width: 768px) {
+    #hero-subtitle {
+      font-size: 1rem;
+      margin-top: 5px;
+      line-height: 1rem;
+    }
   }
 </style>
 
