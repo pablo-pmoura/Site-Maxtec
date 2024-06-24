@@ -1,0 +1,34 @@
+---
+const { cardTitle, cardIcon, whatRow } = Astro.props;
+---
+
+<div id="card-container" class="w-80">
+  <div class={whatRow}>
+    <img src={cardIcon} alt="Card Icon" class="w-8" />
+    <h1 class="text-4xl font-bold max-w-xs mt-5">{cardTitle}</h1>
+    <p class="max-w-xs mt-3">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Id ex rem,
+      aliquid enim magni mollitia adipisci labore officiis soluta nesciunt?
+    </p>
+  </div>
+</div>
+
+<style>
+  #card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 700px;
+  }
+
+  .row-2 {
+    grid-column-start: 2;
+  }
+
+  #card-container h1 {
+    color: var(--azul-maxtec);
+  }
+
+  #card-container p {
+    color: #979797;
+  }
+</style>

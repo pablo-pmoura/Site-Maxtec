@@ -68,7 +68,7 @@ export default function Nav({ imgSource }) {
         </div>
 
         <div className="hidden md:flex md:items-center md:gap-4 md:w-auto">
-          <ul className={`flex gap-6 font-normal ${isScrolled ? 'text-maxtec font-med' : 'text-white'}`}>
+          <ul className={`flex gap-6 font-medium uppercase ${isScrolled ? 'text-maxtec font-med' : 'text-white'}`}>
             <a href=""><li>Home</li></a>
             <a href=""><li>Serviços</li></a>
             <a href=""><li>Projetos</li></a>
