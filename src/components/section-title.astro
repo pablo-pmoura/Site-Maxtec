@@ -1,0 +1,16 @@
+---
+const { title, preTitle } = Astro.props;
+---
+
+<div class="flex flex-col items-center">
+  <p>{preTitle}</p>
+  <h1>{title}</h1>
+</div>
+
+<style>
+  h1 {
+    color: var(--azul-maxtec);
+    font-size: 48px;
+    font-weight: bold;
+  }
+</style>
