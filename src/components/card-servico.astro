@@ -10,7 +10,7 @@ const { services } = Astro.props;
         cardTitle: string;
         serviceDescription: string;
       }) => (
-        <div>
+        <div class="info-container">
           <img src={service.cardIcon} alt="Card Icon" class="w-8" />
           <h1 class="text-4xl font-bold mt-5">{service.cardTitle}</h1>
           <p class="mt-3">{service.serviceDescription}</p>
@@ -26,7 +26,7 @@ const { services } = Astro.props;
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    column-gap: 20px;
+    column-gap: 48px;
     opacity: 0;
     left: -20px;
     transition: all 1s ease;
@@ -39,19 +39,46 @@ const { services } = Astro.props;
 
   #card-container h1 {
     color: var(--azul-maxtec);
-    width: 100%;
   }
 
   #card-container p {
     color: #979797;
     font-size: 16px;
-    width: 80%;
+  }
+
+  @media (max-width: 1400px) {
+    #card-container {
+      width: 100%;
+    }
+  }
+  @media (max-width: 1200px) {
+    #card-container {
+      width: 100%;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      column-gap: 40px;
+      row-gap: 40px;
+      width: 100%;
+    }
   }
 
   @media (max-width: 768px) {
+    #card-container p {
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    #card-container h1 {
+      font-size: 28px;
+    }
+  }
+
+  @media (max-width: 548px) {
     #card-container {
       grid-template-columns: 1fr;
-      column-gap: 0px;
+      grid-template-rows: 1fr;
+      column-gap: 20px;
+      row-gap: 50px;
       width: 100%;
     }
   }
