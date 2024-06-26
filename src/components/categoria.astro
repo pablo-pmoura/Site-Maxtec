@@ -1,0 +1,29 @@
+---
+const { categoria, backgroundColor, textColor } = Astro.props;
+---
+
+<div
+  class="categoria-container"
+  style={`background-color: ${backgroundColor || "transparent"}`}
+>
+  <h1 style={`color: ${textColor || "#ff0000"}`}>
+    {categoria}
+  </h1>
+</div>
+
+<style>
+  .categoria-container {
+    width: 125px;
+    border: 1px solid red;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 0px;
+  }
+
+  .categoria-container h1 {
+    font-size: 16px;
+    line-height: normal;
+  }
+</style>

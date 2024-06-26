@@ -1,0 +1,67 @@
+---
+import CardServico from "../components/card-servico.astro";
+import Categoria from "../components/categoria.astro";
+import SectionTitle from "../components/section-title.astro";
+
+const services = [
+  {
+    cardTitle: "Serviço 1",
+    cardIcon: "/icons/wrench.and.screwdriver.svg",
+    serviceDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id ex rem, aliquid enim magni mollitia adipisci labore officiis soluta nesciunt?",
+  },
+
+  {
+    cardTitle: "Serviço 2",
+    cardIcon: "/icons/wrench.and.screwdriver.svg",
+    serviceDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id ex rem, aliquid enim magni mollitia adipisci labore officiis soluta nesciunt?",
+  },
+
+  {
+    cardTitle: "Serviço 3",
+    cardIcon: "/icons/wrench.and.screwdriver.svg",
+    serviceDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id ex rem, aliquid enim magni mollitia adipisci labore officiis soluta nesciunt?",
+  },
+
+  {
+    cardTitle: "Serviço 4",
+    cardIcon: "/icons/wrench.and.screwdriver.svg",
+    serviceDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id ex rem, aliquid enim magni mollitia adipisci labore officiis soluta nesciunt?",
+  },
+];
+---
+
+<section class="w-full relative flex flex-col items-center py-40 px-6">
+  <div class="info-main-grid flex flex-col w-3/4">
+    <div class="info-title-container">
+      <Categoria categoria="Serviços" />
+      <h1 class="text-3xl font-bold text-maxtec">Nossos Serviços</h1>
+      <p class="mt-2">
+        At ScrewFast, we tackle the unique challenges encountered in the
+        hardware and construction sectors. From cutting-edge tools to expert
+        services, we're dedicated to helping you overcome obstacles and achieve
+        your goals.
+      </p>
+    </div>
+
+    <div
+      class="info-services-grid grid grid-cols-2 grid-rows-2 gap-y-10 gap-x-20"
+    >
+      <CardServico {services} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .info-main-grid {
+    grid-template-columns: 0.5fr 1fr;
+    column-gap: 80px;
+  }
+
+  .info-title-container p {
+    color: #979797;
+  }
+</style>

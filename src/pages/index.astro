@@ -1,41 +1,8 @@
 ---
 import CardServico from "../components/card-servico.astro";
 import Hero from "../components/hero.astro";
-import Nav from "../components/nav.tsx";
-import Projeto from "../components/projeto.astro";
-import SectionTitle2 from "../components/section-title-2.astro";
-import SectionTitle from "../components/section-title.astro";
-import DefaultSection from "../layouts/defaultSection.astro";
 
-const services = [
-  {
-    cardTitle: "Serviço 1",
-    cardIcon: "/icons/wrench.and.screwdriver.svg",
-    serviceDescription:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id ex rem, aliquid enim magni mollitia adipisci labore officiis soluta nesciunt?",
-  },
-
-  {
-    cardTitle: "Serviço 2",
-    cardIcon: "/icons/wrench.and.screwdriver.svg",
-    serviceDescription:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id ex rem, aliquid enim magni mollitia adipisci labore officiis soluta nesciunt?",
-  },
-
-  {
-    cardTitle: "Serviço 3",
-    cardIcon: "/icons/wrench.and.screwdriver.svg",
-    serviceDescription:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id ex rem, aliquid enim magni mollitia adipisci labore officiis soluta nesciunt?",
-  },
-
-  {
-    cardTitle: "Serviço 4",
-    cardIcon: "/icons/wrench.and.screwdriver.svg",
-    serviceDescription:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id ex rem, aliquid enim magni mollitia adipisci labore officiis soluta nesciunt?",
-  },
-];
+import ServiceSection from "../layouts/serviceSection.astro";
 
 const projects = [
   { img: "/public/photos/elevacao.jpg", title: "Projeto 1" },
@@ -57,31 +24,12 @@ const projects = [
     <title>Astro</title>
   </head>
   <body>
-    <Nav client:load imgSource="/icons/mxt-logo.svg" />
-
     <Hero
       imgLink="/photos/guindaste.png"
       heroLogo="/icons/maxtec-lettering.png"
       subtitulo="SISTEMAS PARA MOVIMENTAÇÃO DE CARGAS"
     />
 
-    <DefaultSection>
-      <SectionTitle
-        title="Nossos Serviços"
-        preTitle="Especialistas em movimentação de cargas"
-      />
-      <CardServico {services} />
-    </DefaultSection>
-
-    <DefaultSection>
-      <SectionTitle2
-        sectionTitle2="Cases Maxtec"
-        sectionPreTitle2="Portifólio de projetos realizados"
-      />
-
-      <Projeto {projects} />
-
-      <div class="h-[2000px]"></div>
-    </DefaultSection>
+    <ServiceSection />
   </body>
 </html>
